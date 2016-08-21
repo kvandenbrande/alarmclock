@@ -20,7 +20,7 @@ def alarm():
     #print "we have internet connection"
     playlocal()
     time.sleep(2)
-    greetings()
+    greetings(0)#0 for internet
     weather()
     time.sleep(5)
     radio()
@@ -28,7 +28,7 @@ def alarm():
     #print "there's no internet connection"
     playlocal()
     time.sleep(2)
-    greetings()
+    greetings(1)#1 for no internet message
 
 def playlocal():
   #output 1 to 6.mp3
@@ -36,7 +36,7 @@ def playlocal():
   subprocess.Popen(['mpg123', '-q',song]).wait()
 
 
-def greetings():
+def greetings(status):
   #day_of_month=str(bsn.d2w(int(time.strftime("%d"))))
 
   now = time.strftime("%A %B %d") + ',' + time.strftime(" %I %M %p")
@@ -57,8 +57,14 @@ def greetings():
   # reads date and time 
   day = ' it\'s ' + now + '.  '
 
-  greeting = gmt + NAME + day
+  # reads no internet
+  internet = ' currently there is no active internet connection'
 
+  if status ==0:
+    greeting = gmt + NAME + day
+  else:
+    greeting = gmt + NAME + day + internet
+  
   cmd_string = 'espeak -s110 -ven-f3 "{0}" >/dev/null'.format(greeting)
   #print cmd_string
   os.system(cmd_string)
