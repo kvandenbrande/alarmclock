@@ -32,7 +32,7 @@ def alarm():
 
 def playlocal():
   #output 1 to 6.mp3
-  song = str(random.randint(1, 10)) + ".mp3"
+  song = str(random.randint(1, 11)) + ".mp3"
   subprocess.Popen(['mpg123', '-q',song]).wait()
 
 
