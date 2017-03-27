@@ -1,6 +1,8 @@
 #!/bin/python
 # -*- coding: utf-8 -*-
 #__author__ = "Kevin Van den Brande"
+# sudo apt-get install espeak python-espeak
+# sudo pip install python-mpd2
 
 from internet import is_connected
 from push import pushnotify
