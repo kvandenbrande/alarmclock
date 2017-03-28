@@ -76,10 +76,13 @@ def weather():
   weather = "The weather today is " + string.lower(weather_com_result['current_conditions']['text']) + " and " + weather_com_result['current_conditions']['temperature'] + " degrees celsius \n\n"
 
   cmd_string = 'espeak -s170 -ven-f4 "{0}" >/dev/null'.format(weather)
-  print cmd_string
+  #print cmd_string
   os.system(cmd_string)
-  pushnotify("Weather forecast", weather)
-
+  try:
+      pushnotify("Weather forecast", weather)
+  except:
+      pass
+    
 def radio():
   os.system('mpc play')
 
